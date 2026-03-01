@@ -1,12 +1,20 @@
 from django.shortcuts import render
 from rest_framework.viewsets import ModelViewSet, ReadOnlyModelViewSet
-from rest_framework.permissions import IsAuthenticated
+from django.contrib.auth.models import User
+from rest_framework.permissions import IsAuthenticated, AllowAny
 from rest_framework.filters import OrderingFilter
 from django_filters.rest_framework import DjangoFilterBackend
 from .models import InventoryItem, InventoryChangeLog
-from .serializers import InventoryItemSerializer, InventoryChangeLogSerializer
+from .serializers import InventoryItemSerializer, InventoryChangeLogSerializer, UserSerializer
 from .permissions import IsOwner
 # Create your views here.
+
+
+class UserViewSet(ModelViewSet):
+    query_set = User.objects.all()
+    serializer_class = UserSerializer
+    permission_classes = [AllowAny]
+
 
 class InventoryViewSet(ModelViewSet):
     serializer_class = InventoryItemSerializer
