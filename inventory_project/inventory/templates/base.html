@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Inventory Project</title>
+</head>
+<body>
+
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/"></a>Home</li>
+                <li><a href="{% url 'signup' %}"></a>Signup</li>
+                <li><a href="{% url 'login' %}"></a>Login</li>
+                <li><a href="{% url 'logout' %}"></a>Logout</li>
+            </ul>
+        </nav>
+    </header>
+    {% block content %}
+
+
+
+    {% endblock %}
+</body>
+</html>
